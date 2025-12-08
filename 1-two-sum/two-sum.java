@@ -1,12 +1,13 @@
 class Solution {
     public int[] twoSum(int[] nums, int target) {
-        for(int i = 1; i < nums.length; i++) {
-            for(int j = 0; j + i < nums.length; j++) {
-                if(nums[i + j] + nums[j] == target) {
-                    return new int[]{j, i + j};
-                }
-            }
+       Map<Integer,Integer> map = new HashMap<>();
+       for(int i =0;i<nums.length;i++){
+        int compliment = target-nums[i];
+        if(map.containsKey(compliment)){
+            return new int[]{map.get(compliment), i};
         }
-        return new int[]{-1, -1}; // NO PAIR FOUND
+        map.put(nums[i],i);
+       } 
+       return new int[]{};
     }
 }
